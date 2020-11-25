@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-backend
+  labels:
+    app: test-backend
+    tier: backend
+spec:
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 50%
+  selector:
+    matchLabels:
+      app: test-backend
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: test-backend
+        tier: backend
+    spec:
+      containers:
+        - name: app
+          image: test-backend:dev
+          imagePullPolicy: Never
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "256Mi"
+            requests:
+              cpu: "1m"
+              memory: "10Mi"
+          command: ["npm", "run", "start"]
+          volumeMounts:
+            - name: host-mount
+              mountPath: /app/src
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: 'production'
+      volumes:
+        - name: host-mount
+          hostPath:
+            path: /test-backend/src

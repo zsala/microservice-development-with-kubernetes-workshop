@@ -1,0 +1,14 @@
+{
+  "name": "test-frontend",
+  "version": "0.0.1",
+  "private": true,
+  "config": {
+    "port": "8080"
+  },
+  "scripts": {
+    "start": "node ./bin/server.js"
+  },
+  "dependencies": {
+    "express": "4.x"
+  }
+}

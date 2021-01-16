@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  test-backend:
+    build: ./test-backend
+    expose:
+      - 9000
+    environment:
+      DEPLOYMENY_TYPE: "docker-compose"
+    ports:
+      - 9000:9000
+    volumes:
+      - ./test-backend:/app
+    command: npm run start
+  test-frontend:
+    build: ./test-frontend
+    expose:
+      - 3000
+    environment:
+      DEPLOYMENY_TYPE: "docker-compose"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./test-frontend:/app
+    links:
+      - test-backend
+    command: npm run start

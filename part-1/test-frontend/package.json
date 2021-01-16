@@ -1,14 +1,32 @@
 {
-  "name": "test-frontend",
-  "version": "0.0.1",
+  "name": "create-react-app",
+  "version": "0.1.0",
   "private": true,
-  "config": {
-    "port": "8080"
-  },
   "scripts": {
-    "start": "node ./bin/server.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
-    "express": "4.x"
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@material-ui/core": "^4.0.0",
+    "@material-ui/icons": "^4.11.2",
+    "react": "^17.0.0",
+    "react-dom": "latest",
+    "react-scripts": "latest"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

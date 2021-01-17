@@ -6,10 +6,9 @@ export REMOTE_HOST=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | gr
 # Build Image
 docker build \
 -t 'test-backend:dev' \
--f ./docker/Dockerfile \
+-f ./Dockerfile \
 .
 
-# Mount Project to Minikube for user hive
 if grep -Eo none ~/.minikube/machines/minikube/config.json ; then
     # --vm-driver=none: create top-level symlink
     ln -Ts "$(pwd)" "/test-backend"
